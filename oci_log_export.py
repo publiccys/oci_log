@@ -102,7 +102,6 @@ def myfunc(argv):
             convert_csv()
             print("1:",PAG)
             PAG = subprocess.check_output(''' oci logging-search search-logs --search-query 'search "''' + str(COMPARTMENT_ID) + '''/_Audit" | sort by datetime desc' --time-start ''' + str(DATE1) + '''"T00:00:00Z" --time-end ''' + str(DATE1) + '''"T23:59:00Z" --page ''' + str(PAG) + ''' | grep "opc-next-page" | awk -F":" '{print $2}' | tr -d '"' | tr -d " " | tail -1 ''', shell=True).strip().decode('ascii')
-            print(''' oci logging-search search-logs --search-query 'search "''' + str(COMPARTMENT_ID) + '''/_Audit" | sort by datetime desc' --time-start ''' + str(DATE1) + '''"T00:00:00Z" --time-end ''' + str(DATE1) + '''"T23:59:00Z" --page ''' + str(PAG) + ''' | grep "opc-next-page" | awk -F":" '{print $2}' | tr -d '"' | tr -d " " | tail -1 ''')
             print("2:",PAG)
             if PAG in ["","["]:
                 break
