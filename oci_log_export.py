@@ -13,7 +13,7 @@ def myfunc(argv):
     START_DATE = ""
     END_DATE = ""
     COMPARTMENT_ID = ""
-    arg_help = "\nUsage:\n\npython3 main.py -s <log_start_date in YYYY-MM-DD Format> -e <log_end_date in YYYY-MM-DD Format> -c <Compartment_ID>\n".format(argv[0])
+    arg_help = "\nUsage:\n\npython3 oci_log_export.py -s <log_start_date in YYYY-MM-DD Format> -e <log_end_date in YYYY-MM-DD Format> -c <Compartment_ID>\n".format(argv[0])
     try:
         opts, args = getopt.getopt(argv[1:],"hs:e:c:")
     except:
