@@ -108,7 +108,7 @@ def myfunc(argv):
         print("successfully collected logs for", DATE1)
         DATE1 += timedelta(days=1)
         i = i + 1
-
+    os.system("cp /tmp/out.csv /home/user/"+ str(COMPARTMENT_ID) +"_auditlog.csv" )
     print("\nThe .csv file is saved in location /tmp/out.csv")
 
 if __name__ == "__main__":
