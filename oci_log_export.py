@@ -65,14 +65,14 @@ def myfunc(argv):
             userAgent.append(ele['data']['logContent']['data']['identity']['userAgent'])
             path.append(ele['data']['logContent']['data']['request']['path'])
             ingestedtime.append(ele['data']['logContent']['oracle']['ingestedtime'])
-            userAgent.append(ele['data']['logContent']['data']['identity']['principalName'])
+            principalName.append(ele['data']['logContent']['data']['identity']['principalName'])
             type.append(ele['data']['logContent']['type'])
             id.append(ele['data']['logContent']['id'])
         finaldate = []
         for ts in datetimez:
             finaldate.append(datetime.datetime.fromtimestamp(int(ts) / 1000).strftime('%Y-%m-%d %H:%M:%S'))
 
-        output = zip(finaldate, compartmentID, compartmentName, message, tenantId, userAgent, path, ingestedtime, type, id)
+        output = zip(finaldate, compartmentID, compartmentName, message, tenantId, userAgent, path, ingestedtime,principalName, type, id)
         output = list(output)
         df = pd.DataFrame(output)
         df.to_csv('/tmp/out.csv', header=False , mode='a',index=False)
@@ -82,7 +82,7 @@ def myfunc(argv):
 
     os.system("touch /tmp/out.csv" )
     os.remove("/tmp/out.csv")
-    header=['Date-Time', 'CompartmentID', 'CompartmentName', 'Message', 'TenantId', 'UserAgent', 'Path', 'Ingested-Time', 'Type', 'ID']
+    header=['Date-Time', 'CompartmentID', 'CompartmentName', 'Message', 'TenantId', 'UserAgent', 'Path', 'Ingested-Time', 'principalName' , 'Type', 'ID']
     data = []
     with open('/tmp/out.csv', 'a') as f:
         writer = csv.writer(f)
