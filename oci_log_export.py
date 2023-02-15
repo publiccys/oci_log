@@ -53,6 +53,7 @@ def myfunc(argv):
         userAgent = []
         path = []
         ingestedtime = []
+        principalName= []
         type = []
         id = []
         for ele in data['data']['results']:
@@ -64,6 +65,7 @@ def myfunc(argv):
             userAgent.append(ele['data']['logContent']['data']['identity']['userAgent'])
             path.append(ele['data']['logContent']['data']['request']['path'])
             ingestedtime.append(ele['data']['logContent']['oracle']['ingestedtime'])
+            userAgent.append(ele['data']['logContent']['data']['identity']['principalName'])
             type.append(ele['data']['logContent']['type'])
             id.append(ele['data']['logContent']['id'])
         finaldate = []
